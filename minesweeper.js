@@ -68,7 +68,16 @@ function setDifficulty(totalCells, difficulty) {
 //
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
-function checkForWin () {
+function checkForWin(e) {
+  const totalCells = board.cells.length;
+  const totalMines = board.cells.filter(cell => {
+    return cell.isMine;
+  }).length;
+  const totalNonMines = totalCells - totalMines;
+  // Filter active cells which is not a mine and not hidden
+  let cells = board.cells.filter(cell => {
+    return !cell.isMine && !cell.hidden;
+  });
 
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
