@@ -49,6 +49,17 @@ function plantMines(size, totalMines) {
   }
 }
 
+
+function setDifficulty(totalCells, difficulty) {
+  switch (difficulty) {
+    case "easy":
+      return Math.floor(0.333 * totalCells);
+    case "medium":
+      return Math.floor(0.40 * totalCells);
+    case "hard":
+      return Math.floor(0.45 * totalCells)
+  }
+}
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
