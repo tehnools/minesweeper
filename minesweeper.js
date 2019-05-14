@@ -60,8 +60,27 @@ function setDifficulty(totalCells, difficulty) {
       return Math.floor(0.45 * totalCells)
   }
 }
+function startGame(size, difficulty) {
+
+  // Calculations
+  const totalCells = size ** 2;
+  const totalMines = setDifficulty(totalCells, difficulty);
+  // Generate Place Space
+  generateBoard(size);
+  plantMines(size, totalMines);
+
   // Don't remove this function call: it makes the game work!
-  lib.initBoard()
+  lib.initBoard();
+
+  for (let cell of board.cells) {
+    countSurroundingMines(cell);
+  }
+
+  // Add Event Listeners
+  document.querySelectorAll('.board div.hidden').forEach(cell => {
+    cell.addEventListener('mouseover', playClick);
+  });
+  document.querySelector('.board').addEventListener('click', checkForWin);
 }
 
 // Define this function to look for a win condition:
