@@ -21,6 +21,15 @@ function generateBoard(size) {
     }
   }
 }
+function getCellByCoordinates(i, j) {
+  try {
+    return board.cells.find(cell => {
+      return cell.row === i && cell.col === j;
+    })
+  } catch (err) {
+    return err;
+  }
+}
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
