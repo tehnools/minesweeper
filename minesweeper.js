@@ -1,9 +1,10 @@
-document.addEventListener('DOMContentLoaded', startGame)
+// Const board
+let board;
 
-// Define your `board` object here!
+// Initilize
 init();
 
-function startGame () {
+
 // Functions
 function generateBoard(size) {
   // Generate board
@@ -21,6 +22,8 @@ function generateBoard(size) {
     }
   }
 }
+
+
 function getCellByCoordinates(i, j) {
   try {
     return board.cells.find(cell => {
@@ -30,6 +33,7 @@ function getCellByCoordinates(i, j) {
     return err;
   }
 }
+
 
 function plantMines(size, totalMines) {
   let count = 0;
@@ -60,6 +64,7 @@ function setDifficulty(totalCells, difficulty) {
       return Math.floor(0.45 * totalCells)
   }
 }
+
 function startGame(size, difficulty) {
 
   // Calculations
@@ -98,10 +103,21 @@ function checkForWin(e) {
     return !cell.isMine && !cell.hidden;
   });
 
-  // You can use this function call to declare a winner (once you've
-  // detected that they've won, that is!)
-  //   lib.displayMessage('You win!')
-}
+  if (cells.length === totalNonMines) {
+    lib.displayMessage('You Win!');
+
+    // remove event listeners
+    lib.removeListeners();
+
+    // Init button and Append
+    let resetButton = createButton('button reset-button is-alert', 'Try Again!');
+    resetButton.addEventListener('click', () => {
+      window.location.reload();
+    });
+    document.querySelector('.container').appendChild(resetButton);
+    return
+  }
+};
 
 // Define this function to count the number of mines around the cell
 function countSurroundingMines(cell) {
@@ -113,6 +129,8 @@ function countSurroundingMines(cell) {
     .length
   cell.surroundingMines = mineCount;
 }
+
+
 // ------------ Handlers
 // Handler for starting New Games
 function startHandler(e) {
