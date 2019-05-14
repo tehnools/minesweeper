@@ -30,3 +30,46 @@ function checkForWin () {
 function countSurroundingMines (cell) {
 }
 
+
+// Init
+function init() {
+  // Start Game on Click
+  lib.displayMessage("Let's Start");
+
+  // Init Board
+  board = { cells: [] }
+
+  // Parent Node
+  let body = document.body;
+  let container = document.createElement('div');
+  container.className = "container";
+
+  // Init Child Nodes
+  let startButton = Builder.createButton('button start-button is-primary', 'START GAME !', startHandler);
+  let difficultyLabel = Builder.createLabel("diffculty", "Select Difficulty")
+  let difficulty = Builder.createSelector(["Easy", "Medium", "Hard"], "difficulty");
+  let inputRangeLabel = Builder.createLabel("size", "Select Size")
+  let rangeDisplay = Builder.createSpan('range-display', "2");
+  let inputRange = Builder.createRange('size', 2, 6);
+
+  //Add Child Nodes
+  let childNodes = [
+    difficultyLabel,
+    difficulty,
+    inputRange,
+    inputRangeLabel,
+    rangeDisplay,
+    startButton
+  ];
+
+  // Append Childrend to container
+  for (let node of childNodes) {
+    container.appendChild(node)
+  }
+  // Append All
+  body.appendChild(container);
+
+  // Add listeners
+  document.querySelector(".start-button").addEventListener('click', startHandler);
+  inputRange.addEventListener('input', updateRange)
+}
