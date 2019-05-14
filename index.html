@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Minesweeper</title>
-    <link rel="stylesheet" href="minesweeper.css">
-    <script src="lib/tests.js"></script>
-    <script src="lib/lib.js"></script>
-    <script src="minesweeper.js"></script>
-  </head>
-  <body>
-    <div id="message"></div>
-    <div id="notes"></div>
-    <div class="board"></div>
-  </body>
+
+<head>
+  <title>Minesweeper</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <link rel="stylesheet" href="minesweeper.css">
+</head>
+
+<body>
+  <div class="container">
+      <div id="message"></div>
+      <div id="notes"></div>
+      <div class="board"></div>
+  </div>
+
+
+  <script src="lib/tests.js"></script>
+  <script src="lib/builder.js"></script>
+  <script src="lib/sounds.js"></script>
+  <script src="lib/lib.js"></script>
+  <script src="minesweeper.js"></script>
+</body>
+
 </html>
