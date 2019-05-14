@@ -4,6 +4,23 @@ document.addEventListener('DOMContentLoaded', startGame)
 init();
 
 function startGame () {
+// Functions
+function generateBoard(size) {
+  // Generate board
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      board.cells.push(
+        {
+          row: i,
+          col: j,
+          isMine: false,
+          hidden: true,
+          isMarked: false
+        }
+      );
+    }
+  }
+}
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
