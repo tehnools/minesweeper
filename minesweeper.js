@@ -110,6 +110,9 @@ function startHandler(e) {
   }
   startGame(size, difficulty);
 }
+
+function updateRange(e) {
+  document.getElementsByClassName("range-display")[0].textContent = e.target.value;
 }
 
 
