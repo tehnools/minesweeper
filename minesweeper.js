@@ -30,6 +30,25 @@ function getCellByCoordinates(i, j) {
     return err;
   }
 }
+
+function plantMines(size, totalMines) {
+  let count = 0;
+  while (count < totalMines) {
+    // Generate Random Coords
+    let i = Math.floor((Math.random() * size - 1) + 1);
+    let j = Math.floor((Math.random() * size - 1) + 1);
+
+    // Get cell
+    let cell = getCellByCoordinates(i, j);
+
+    // Convert cell and advance count
+    if (!cell.isMine) {
+      cell.isMine = true;
+      count += 1;
+    }
+  }
+}
+
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
