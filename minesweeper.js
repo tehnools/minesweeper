@@ -94,6 +94,22 @@ function countSurroundingMines(cell) {
     .length
   cell.surroundingMines = mineCount;
 }
+// ------------ Handlers
+// Handler for starting New Games
+function startHandler(e) {
+  const size = Number(document.getElementsByName("size")[0].value);
+  const difficulty = document.getElementsByName("difficulty")[0].value;
+
+  if (e !== undefined) {
+    let element = e.target;
+
+    // Remove Start Button
+    if (element.classList.contains('start-button')) {
+      Builder.deleteChildNodes(element.parentNode)
+    }
+  }
+  startGame(size, difficulty);
+}
 }
 
 
