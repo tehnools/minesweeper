@@ -9,6 +9,7 @@ html, body {
   align-content: center;
   justify-content: center;
   text-align: center;
+  flex-shrink: 0;
 }
 
 body {
